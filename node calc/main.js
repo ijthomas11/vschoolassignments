@@ -21,7 +21,7 @@ var num1 = readlineSync.question("Please enter your first number: ");
 console.log(num1);
 var num2 = readlineSync.question("Please enter your second number: ");
 console.log(num2);
-var operation = readlineSync.question("Please enter the operation to perform: ")
+var operation = readlineSync.question("Please enter the operation to perform(add,subtract,multiply, or divide)): ")
 console.log(operation);
 if (operation === "add") {
     var result = addNum(num1, num2);
