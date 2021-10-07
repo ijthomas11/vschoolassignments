@@ -1,22 +1,23 @@
 var enemies = ["Lex", "Batman", "Darkseid", "Brainiac", "General Zod", "Doomsday"];
 
-function whoWins(isThereKryptonite, enemies) {
-    if (!isThereKryptonite) {
+function whoWins(isThereKryptonite) {
+    if (isThereKryptonite) {
         return "Superman beats " + enemies + ", of course";
     } else {
         return "Depends on how quick Superman can get rid of the Kryptonite. " + enemies + " could possibly win this one.";
     }
 }
 
-var isThereKryptonite
-for (var i = 0; i < enemies.length; i++) {
+
+for (var i = 5; i < enemies.length; i++) {
 
     if (i % 2 === 0) {
-        istThereKryptonite = true;
+        isThereKryptonite = true;
     } else {
         isThereKryptonite = false;
     }
-    console.log(whoWins(enemies[i]));
+    console.log(whoWins(enemies));
+
 }
 
 function howAttractedIsLoisLaneToMe() {
