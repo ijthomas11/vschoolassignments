@@ -15,14 +15,6 @@ var player = {
 }
 var attackers = ["Freddy Kreuger", "Jason", "Dracula"]
 
-var key = readlineSync.keyIn('', {
-    hideEchoBack: true,
-    mask: '',
-    limit: 'p'
-})
-if (key = 'p') {
-    console.log(player)
-}
 
 Array.prototype.sample = function() {
     return attackers[Math.floor(Math.random() * attackers.length)];
@@ -31,72 +23,32 @@ Array.prototype.sample = function() {
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * 10);
 }
-let attackerCounter = getRandomInt();
-console.log(attackerCounter)
-while (walk === "w") {
-    if (attackerCounter <= 3) {
-        console.log("An enemy is near. You are about to be attacked by..." + [attackers].sample())
-        break;
 
-    } else {
-        console.log("Keep walking...");
-        process.exit()
+while (player.HP > 0) {
+    const walk = readlineSync.question("Hello " + name + " please enter the character w to start walking or p to print: ")
+    if (walk === 'w') {
+        let attackerCounter = getRandomInt();
+        if (attackerCounter <= 3) {
+            const enemy = attackers.sample()
+            console.log("An enemy is near. You are about to be attacked by..." + enemy)
+            fight(enemy)
+
+        } else {
+            console.log("Keep walking...");
+        }
+    }
+    if (walk === 'p') {
+        console.log(player)
     }
 }
 
-const attackOrRun = readlineSync.question("You have two options...Attack or Run:")
+
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(50)
     max = Math.ceil(100)
     return Math.floor(Math.random() * (100 - 50 + 1) + 50)
 }
-let attackerDamage = getRandomIntInclusive()
-
-function attackerHP() {
-    return (+100) - (+attackerDamage)
-}
-let attackerHp = attackerHP()
-
-console.log(attackerDamage)
-console.log(attackerHp)
-
-while (attackOrRun === "Attack") {
-    if (attackerDamage < 100) {
-        console.log("You have damaged the enemy by " + attackerDamage + "." + " His health is " + attackerHp + ".")
-        break;
-    } else {
-        console.log("You have killed the enemy. ");
-        var playerItems = player.Items
-        playerItems.push("rocket-launcher")
-        var extraHp = 25
-    }
-}
-let escapeChances = Math.random()
-console.log(escapeChances)
-while (attackOrRun === "Run") {
-    if (escapeChances <= 0.5) {
-        console.log("You have failed the escape and died. GAME OVER!")
-        process.exit()
-    } else {
-        console.log("You have escaped.Keep walking..")
-        break;
-    }
-}
-
-let playerDamage = getRandomIntInclusive()
-
-function playerHP() {
-    return (+100) - (+playerDamage)
-}
-const playerHp = playerHP()
-
-function totalHP2() {
-    return (+playerHp)
-}
-let newHP = totalHP2()
-let newPlayerHp = HP.splice(0, 1, newHP)
-console.log(player)
 
 function getRandomInt1(min, max) {
     min = Math.ceil(50)
@@ -104,36 +56,61 @@ function getRandomInt1(min, max) {
     return Math.floor(Math.random() * (50 - 30 + 1) + 30)
 }
 
-let attackerDamage2 = getRandomInt1()
 
-function attackerHP2() {
-    return (+100) - ((+attackerDamage) + (+attackerDamage2))
-}
-let attackerHp2 = attackerHP2()
 
-if (attackerHp2 < 0) {
-    console.log("You have destroyed the enemy.");
-    var playerItems = player.Items
-    playerItems.push("rocket-launcher", "grenade")
-    var extraHp = 50
+function fight(enemy) {
+    const attackOrRun = readlineSync.keyIn("You have three options...[a]Attack, [r]Run, or [p]Info", {
+        limit: "a,r,p"
+    });
+    let attackerHP = 100
+    while (attackOrRun === "a" && player.HP > 0 && attackerHP > 0) {
+        let attackerDamage = getRandomIntInclusive()
+        attackerHP = getAttackerHP()
+        console.log(attackerHP)
 
-}
-if (attackerHp2 > 0) {
-    function playerHP2() {
-        return (+100) - ((+playerDamage) + (+playerDamage2))
+        function getAttackerHP() {
+            console.log(attackerHP)
+            console.log(attackerDamage)
+            return (+attackerHP) - (+attackerDamage)
+        }
+        let playerDamage = getRandomInt1()
+        player.HP = playerHP()
+        console.log(playerDamage)
+        console.log(player.HP)
+
+
+        function playerHP() {
+            return (+player.HP) - (+playerDamage)
+        }
+        if (attackerDamage < 100) {
+            console.log("You have damaged the enemy by " + attackerDamage + "." + " His health is " + attackerHP + ".")
+
+        }
+        if (attackerHP < 0 && player.HP > 0) {
+            console.log("You have killed the enemy. ");
+            var playerItems = player.Items
+            playerItems.push("rocket-launcher")
+            var extraHp = 25
+        }
     }
-    let playerDamage2 = getRandomInt()
-    let playerHp2 = playerHP2()
 
-    function totalHP3() {
-        return (+playerHp2)
+    let escapeChances = Math.random()
+    while (attackOrRun === "r") {
+        console.log(escapeChances)
+        if (escapeChances <= 0.5) {
+            console.log("You have failed the escape and died. GAME OVER!")
+            process.exit()
+        } else {
+            console.log("You have escaped.Keep walking..")
+            break;
+        }
     }
-    let newHP2 = totalHP3()
-    let newPlayerHp2 = HP.splice(0, 1, newHP2)
+    while (attackOrRun === "p") {
+        console.log(player)
+        break;
+    }
+
 }
 
-console.log(player)
-console.log(attackerDamage2)
-console.log(attackerHp2)
 
-//** still could tweak game further...i.e add in extra HP, keep game going..**
+//** still could tweak game further...i.e add in extra HP

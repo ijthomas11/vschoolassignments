@@ -7,6 +7,8 @@
 
 .container>.red {
     background-color: red;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .container>.green {
@@ -15,23 +17,4 @@
 
 .container>.yellow {
     background-color: yellow;
-}
-
-.name {
-    display: block;
-    position: absolute;
-    font-size: 50px;
-    color: blue;
-}
-
-.foodItems li {
-    color: blue;
-}
-
-.mainTaco {
-    width: 100px;
-    display: block;
-    position: absolute;
-    margin-left: 231px;
-    height: 130px;
 }
