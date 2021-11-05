@@ -1,0 +1,24 @@
+#container {
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 200px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+}
+
+#container>.math {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    position: inherit;
+}
+
+#heading {
+    color: lightslategrey;
+    font-family: 'Courier New', sans-serif, monospace;
+    display: flex;
+    align-self: center;
+}
