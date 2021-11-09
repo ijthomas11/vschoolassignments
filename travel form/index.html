@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> I.T Travel Form</title>
+</head>
+
+<body>
+    <h1 id="header"> Welcome to I.T. Airlines!</h1>
+    <p>Please enter your info so that we may expedite your travel needs. Thanks!</p>
+    <form id="travelInfo">
+        <input name="firstName" type="text">
+        <label for="">First Name</label>
+        <br>
+        <input name="lastName" type="text">
+        <label for="">Last Name</label>
+        <br>
+        <input name="age" type="digit">
+        <label for="">Age</label>
+        <br>
+        <input name="gender" type="radio" value="Male" id="Male">
+        <label for="Male">Male</label>
+        <br>
+        <input name="gender" type="radio" value="Female" id="Female">
+        <label for="Female">Female</label>
+        <br>
+        <select name="travelDestination">
+            <option value="Egypt">Egypt</option>
+            <option value="Dubai">Dubai</option>
+            <option value="Amsterdam">Amsterdam</option>
+        </select>
+        <label for="">Where is your travel destination?</label>
+        <br>
+        <input class="foodPreference" name="Gluten Free" type="checkbox" value="Gluten Free" id="Gluten Free">
+        <label for="Gluten Free">Gluten Free</label>
+        <br>
+        <input class="foodPreference" name="Vegan" type="checkbox" value="Vegan" id="Vegan">
+        <label for="Vegan">Vegan</label>
+        <br>
+        <input class="FoodPreference" name="Anything" type="checkbox" value="Anything you can get your hands on" id="Anything">
+        <label for="Anything">Anything you can get your hands on</label>
+        <br>
+        <button type="button" id="submit"> Submit</button>
+    </form>
+    <script src="index.js"></script>
+</body>
+
+</html>
