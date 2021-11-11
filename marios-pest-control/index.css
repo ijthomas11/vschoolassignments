@@ -1,0 +1,23 @@
+div>.heading {
+    color: red;
+    display: inline;
+    width: 200px;
+}
+
+.heading {
+    color: red;
+}
+
+.baddies {
+    display: inline-flex;
+    width: 200px;
+}
+
+.footer {
+    background-color: red;
+    border-radius: 5px;
+}
+
+.container {
+    background-color: saddlebrown;
+}
