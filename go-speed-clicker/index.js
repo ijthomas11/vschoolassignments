@@ -8,22 +8,20 @@ document.addEventListener("click", function() {
 
 })
 var timer = document.getElementById("timer")
-var time = 10
+var time = 30
 
 function getTimer() {
     timer.textContent = time--
 
 }
 var timerID = setInterval(getTimer, 1000)
-let stopClick = false
 
 function stopTimer() {
     clearInterval(timerID);
-
 }
 
 
-var timerStop = setTimeout(stopTimer, 11000)
+var timerStop = setTimeout(stopTimer, 31000)
     // document.addEventListener("click").disabled = true
     // if (timer === 0) {
     //     document.off("click")}
